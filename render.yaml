@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: buscador-letras-python
+    runtime: python
+    buildCommand: ""
+    startCommand: python app.py
+    envVars:
+      - key: GENIUS_TOKEN
+        value: aYPRwJO34KOj5wgYI_g5L47E5f6NSPbC2xRd9IOJPSq5SRflTD6h_hX57_hhIoW3

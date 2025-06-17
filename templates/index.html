@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Buscador de Canciones</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>🎧 Buscar Letra de Cancion</h1>
+    <form method="POST">
+      <input type="text" name="cancion" placeholder="Nombre de la canción" required>
+      <input type="text" name="artista" placeholder="Nombre del artista (opcional)">
+      <button type="submit">Buscar</button>
+    </form>
+       {% if resultados %}
+        <h2>Resultados:</h2>
+        <ul>
+            {% for r in resultados %}
+                <li>
+                    {% if r.url %}
+                        <a href="{{ r.url }}" target="_blank">{{ r.titulo }}</a>
+                    {% else %}
+                        {{ r.titulo }}
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+  </div>
+</body>
+</html>
