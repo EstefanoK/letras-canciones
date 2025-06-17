@@ -3,7 +3,8 @@ import requests
 
 app = Flask(__name__)
 
-GENIUS_TOKEN = "aYPRwJO34KOj5wgYI_g5L47E5f6NSPbC2xRd9IOJPSq5SRflTD6h_hX57_hhIoW3"
+import os
+GENIUS_TOKEN = os.environ.get("GENIUS_TOKEN")
 
 @app.route("/", methods=["GET", "POST"])
 def home():
@@ -34,5 +35,8 @@ def home():
 
     return render_template("index.html", resultados=resultados)
 
+import os
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
